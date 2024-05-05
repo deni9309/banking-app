@@ -132,7 +132,7 @@ export function getAccountTypeColors(type: AccountTypes) {
 export function countTransactionCategories(
   transactions: Transaction[]
 ): CategoryCount[] {
-  const categoryCounts: { [category: string]: number } = {};
+  const categoryCounts: { [category: string]: number; } = {};
   let totalCount = 0;
 
   // Iterate over each transaction
