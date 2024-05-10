@@ -13,6 +13,7 @@ import { Form } from "./ui/form";
 import { signIn, signUp } from "@/lib/actions/user.actions";
 import CustomInput from "./CustomInput";
 import { Button } from "./ui/button";
+import PlaidLink from "./PlaidLink";
 
 const AuthForm = ({ type }: { type: string; }) => {
   const router = useRouter();
@@ -30,7 +31,7 @@ const AuthForm = ({ type }: { type: string; }) => {
     setIsLoading(true);
     try {
       // Sign up with Appwrite & create plaid link token
-      
+
       if (type === 'sign-up') {
         const userData = {
           firstName: data.firstName!,
@@ -87,7 +88,7 @@ const AuthForm = ({ type }: { type: string; }) => {
 
       {user ? (
         <div className="flex flex-col gap-4">
-          {/* PlaidLink Component */}
+          <PlaidLink user={user} variant="primary" />
         </div>
       ) : (
         <>

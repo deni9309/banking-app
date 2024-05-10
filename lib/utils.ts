@@ -181,6 +181,16 @@ export function extractCustomerIdFromUrl(url: string) {
 
 export function encryptId(id: string) {
   return btoa(id);
+
+  // if (typeof window !== 'undefined' && typeof window.btoa === 'function') {
+  //   // Browser environment
+  //   return window.btoa(id);
+  // } else if (typeof Buffer !== 'undefined') {
+  //   // Node.js environment
+  //   return Buffer.from(id).toString('base64');
+  // } else {
+  //   throw new Error('Base64 encoding not supported in this environment');
+  // }
 }
 
 export function decryptId(id: string) {
