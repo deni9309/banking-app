@@ -151,12 +151,7 @@ export const createLinkToken = async (user: User) => {
 };
 
 export const createBankAccount = async ({
-  userId,
-  bankId,
-  accountId,
-  accessToken,
-  fundingSourceUrl,
-  shareableId,
+  userId, bankId, accountId, accessToken, fundingSourceUrl, shareableId
 }: createBankAccountProps) => {
   try {
     const { database } = await createAdminClient();
@@ -181,10 +176,7 @@ export const createBankAccount = async ({
   }
 };
 
-export const exchangePublicToken = async ({
-  publicToken,
-  user,
-}: exchangePublicTokenProps) => {
+export const exchangePublicToken = async ({ publicToken, user }: exchangePublicTokenProps) => {
   try {
     // Exchange public token for access token and item ID
     const response = await plaidClient.itemPublicTokenExchange({
@@ -218,7 +210,6 @@ export const exchangePublicToken = async ({
       bankName: accountData.name,
     });
 
-    // If the funding source URL is not created, throw an error
     if (!fundingSourceUrl) throw Error;
 
     // Create a bank account using the user ID, item ID, account ID, access token, funding source URL, and shareableId ID
@@ -233,12 +224,62 @@ export const exchangePublicToken = async ({
 
     // Revalidate the path to reflect the changes
     revalidatePath("/");
-console.log(accessToken)
+
     // Return a success message
     return parseStringify({
       publicTokenExchange: "complete",
     });
   } catch (error) {
     console.error("An error occurred while creating exchanging token:", error);
+  }
+};
+
+export const getBanks = async ({ userId }: getBanksProps) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const banks = await database.listDocuments(
+      DATABASE_ID!,
+      BANK_COLLECTION_ID!,
+      [Query.equal('userId', [userId])]
+    );
+
+    return parseStringify(banks.documents);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getBank = async ({ documentId }: getBankProps) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const bank = await database.listDocuments(
+      DATABASE_ID!,
+      BANK_COLLECTION_ID!,
+      [Query.equal('$id', [documentId])]
+    );
+
+    return parseStringify(bank.documents[0]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getBankByAccountId = async ({ accountId }: getBankByAccountIdProps) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const bank = await database.listDocuments(
+      DATABASE_ID!,
+      BANK_COLLECTION_ID!,
+      [Query.equal('accountId', [accountId])]
+    );
+
+    if (bank.total !== 1) return null;
+
+    return parseStringify(bank.documents[0]);
+  } catch (error) {
+    console.log(error);
   }
 };
