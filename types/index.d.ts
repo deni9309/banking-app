@@ -82,6 +82,11 @@ declare type Transaction = {
   receiverBankId: string;
 };
 
+declare interface AccountWithTransactions {
+  data: Account;
+  transactions: Transaction[];
+}
+
 declare type Bank = {
   $id: string;
   accountId: string;

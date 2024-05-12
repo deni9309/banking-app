@@ -58,7 +58,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
 };
 
 // Get one bank account
-export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
+export const getAccount = async ({ appwriteItemId }: getAccountProps)=> {
   try {
     const bank = await getBank({ documentId: appwriteItemId });
 
