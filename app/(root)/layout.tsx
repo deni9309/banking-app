@@ -6,7 +6,7 @@ import MobileNav from "@/components/MobileNav";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
-  const loggedIn = await getLoggedInUser();
+  const loggedIn: LoggedInType = await getLoggedInUser();
 
   if (!loggedIn) redirect('/sign-in');
 

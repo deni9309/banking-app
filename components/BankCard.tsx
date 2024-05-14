@@ -1,12 +1,15 @@
 import Link from "next/link";
 
-import { formatAmount } from "@/lib/utils";
+import { cn, formatAmount } from "@/lib/utils";
 import Image from "next/image";
 
-const BankCard = ({ account, userName, showBalance = true }: CreditCardProps) => {
+const BankCard = ({ account, userName, showBalance = true, type = 'aside' }: CreditCardProps) => {
   return (
     <div className="flex flex-col">
-      <Link href="/" className="bank-card">
+      <Link href="/" className={cn('bank-card', {
+        'min-w-[320px]': type === 'main',
+        'min-w-[295px]' : type === 'aside'
+      })}>
         <div className="bank-card_content">
           <div>
             <h1 className="text-16 font-semibold text-white">{account.name}</h1>

@@ -8,15 +8,23 @@ import TransactionsTable from "@/components/TransactionsTable";
 
 const TransactionHistory = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
-  const loggedIn = await getLoggedInUser();
+  const loggedIn: LoggedInType = await getLoggedInUser();
 
-  const accounts = await getAccounts({ userId: loggedIn.$id });
+  const accounts: {
+    data: Account[],
+    totalBanks: number,
+    totalCurrentBalance: number;
+  } = await getAccounts({ userId: loggedIn.$id });
+
   if (!accounts) return;
 
   const accountsData = accounts?.data;
   const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
 
-  const account: { data: PlaidResponseAccount, transactions: any[]; } = await getAccount({ appwriteItemId });
+  const account: {
+    data: PlaidResponseAccount,
+    transactions: any[];
+  } = await getAccount({ appwriteItemId });
 
   return (
     <section className="transactions">

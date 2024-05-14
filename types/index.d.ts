@@ -25,6 +25,27 @@ declare type LoginUser = {
   password: string;
 };
 
+declare type LoggedInType = {
+  email: string;
+  userId: string;
+  dwollaCustomerUrl: string;
+  dwollaCustomerId: string;
+  firstName: string;
+  lastName: string;
+  address1: string;
+  city: string;
+  postalCode: string;
+  dateOfBirth: string;
+  ssn: string;
+  state: string;
+  '$id': string;
+  '$createdAt': string;
+  '$updatedAt': string;
+  '$permissions': any[],
+  '$databaseId': string;
+  '$collectionId': string;
+};
+
 declare type User = {
   $id: string;
   email: string;
@@ -117,7 +138,7 @@ declare type PlaidResponseTransaction = {
   date: string;
   image: string | null | undefined;
   type: string;
-}
+};
 
 declare type Bank = {
   $id: string;
@@ -178,6 +199,7 @@ declare interface CreditCardProps {
   account: Account;
   userName: string;
   showBalance?: boolean;
+  type?: 'main' | 'aside';
 }
 
 declare interface BankInfoProps {
@@ -194,7 +216,7 @@ declare interface HeaderBoxProps {
 }
 
 declare interface MobileNavProps {
-  user: User;
+  user: User | LoggedInType;
 }
 
 declare interface PageHeaderProps {
@@ -247,18 +269,18 @@ declare interface TotalBalanceBoxProps {
 }
 
 declare interface FooterProps {
-  user: User;
+  user: User | LoggedInType;
   type?: 'mobile' | 'desktop';
 }
 
 declare interface RightSidebarProps {
-  user: User;
+  user: User | LoggedInType;
   transactions: Transaction[];
   banks: Bank[] & Account[];
 }
 
 declare interface SiderbarProps {
-  user: User;
+  user: User | LoggedInType;
 }
 
 declare interface RecentTransactionsProps {
