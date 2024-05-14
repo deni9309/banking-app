@@ -63,6 +63,19 @@ declare type Account = {
   shareableId: string;
 };
 
+declare type PlaidResponseAccount = {
+  id: string;
+  availableBalance: number;
+  currentBalance: number,
+  institutionId: string;
+  name: string;
+  officialName: string;
+  mask: string;
+  type: string;
+  subtype: string;
+  appwriteItemId: string;
+};
+
 declare type Transaction = {
   id: string;
   $id: string;
@@ -81,6 +94,30 @@ declare type Transaction = {
   senderBankId: string;
   receiverBankId: string;
 };
+
+declare type TransferTransaction = {
+  id: string;
+  name: string;
+  amount: string;
+  date: string;
+  paymentChannel: string;
+  category: string;
+  type: string;
+};
+
+declare type PlaidResponseTransaction = {
+  id: string;
+  name: string;
+  paymentChannel: string;
+  type: string;
+  accountId: string;
+  amount: number;
+  pending: boolean;
+  category: string;
+  date: string;
+  image: string | null | undefined;
+  type: string;
+}
 
 declare type Bank = {
   $id: string;
