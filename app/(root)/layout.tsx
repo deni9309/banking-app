@@ -13,7 +13,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <main className="flex h-screen w-full font-inter">
       <Sidebar user={loggedIn} />
-      
+
       <div className="flex flex-col size-full">
         <div className="root-layout">
           <Image src="/icons/logo.svg" alt="Horizon logo" width={30} height={30} />
@@ -21,9 +21,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <MobileNav user={loggedIn} />
           </div>
         </div>
-
         {children}
-      
       </div>
     </main>
   );

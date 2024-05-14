@@ -6,10 +6,7 @@ import BankInfo from './BankInfo';
 import TransactionsTable from './TransactionsTable';
 
 const RecentTransactions = ({
-  accounts,
-  transactions = [],
-  appwriteItemId,
-  page = 1,
+  accounts, transactions = [], appwriteItemId, page = 1
 }: RecentTransactionsProps) => {
 
   return (
@@ -40,8 +37,8 @@ const RecentTransactions = ({
         {accounts.map((account: Account) => (
           <TabsContent value={account.appwriteItemId} key={account.id} className="space-y-4">
             <BankInfo
-              account={account} 
-              appwriteItemId={appwriteItemId} 
+              account={account}
+              appwriteItemId={appwriteItemId}
               type="full"
             />
 

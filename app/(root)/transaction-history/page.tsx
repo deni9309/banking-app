@@ -4,6 +4,7 @@ import HeaderBox from "@/components/HeaderBox";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { formatAmount } from "@/lib/utils";
+import TransactionsTable from "@/components/TransactionsTable";
 
 const TransactionHistory = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
@@ -40,6 +41,10 @@ const TransactionHistory = async ({ searchParams: { id, page } }: SearchParamPro
             <p className="text-24 text-center font-bold">{formatAmount(account?.data.currentBalance)}</p>
           </div>
         </div>
+
+        <section className="flex flex-col gap-6 w-full">
+          <TransactionsTable transactions={account?.transactions} />
+        </section>
       </div>
     </section>
   );
