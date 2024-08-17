@@ -1,14 +1,17 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BankTabItem } from './BankTabItem';
-import BankInfo from './BankInfo';
-import TransactionsTable from './TransactionsTable';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { BankTabItem } from './BankTabItem'
+import BankInfo from './BankInfo'
+import TransactionsTable from './TransactionsTable'
 
 const RecentTransactions = ({
-  accounts, transactions = [], appwriteItemId, page = 1
+  accounts,
+  transactions = [],
+  appwriteItemId,
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  page = 1,
 }: RecentTransactionsProps) => {
-
   return (
     <section className="recent-transactions">
       <header className="flex items-center justify-between">
@@ -35,7 +38,11 @@ const RecentTransactions = ({
         </TabsList>
 
         {accounts.map((account: Account) => (
-          <TabsContent value={account.appwriteItemId} key={account.id} className="space-y-4">
+          <TabsContent
+            value={account.appwriteItemId}
+            key={account.id}
+            className="space-y-4"
+          >
             <BankInfo
               account={account}
               appwriteItemId={appwriteItemId}
@@ -47,7 +54,7 @@ const RecentTransactions = ({
         ))}
       </Tabs>
     </section>
-  );
-};
+  )
+}
 
-export default RecentTransactions;
+export default RecentTransactions

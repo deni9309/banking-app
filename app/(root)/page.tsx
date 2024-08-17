@@ -1,32 +1,33 @@
-import React from 'react';
+import React from 'react'
 
-import HeaderBox from "@/components/HeaderBox";
-import RecentTransactions from "@/components/RecentTransactions";
-import RightSidebar from "@/components/RightSidebar";
-import TotalBalanceBox from "@/components/TotalBalanceBox";
-import { getAccount, getAccounts } from '@/lib/actions/bank.actions';
-import { getLoggedInUser } from "@/lib/actions/user.actions";
+import HeaderBox from '@/components/HeaderBox'
+import RecentTransactions from '@/components/RecentTransactions'
+import RightSidebar from '@/components/RightSidebar'
+import TotalBalanceBox from '@/components/TotalBalanceBox'
+import { getAccount, getAccounts } from '@/lib/actions/bank.actions'
+import { getLoggedInUser } from '@/lib/actions/user.actions'
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
-  const currentPage = Number(page as string) || 1;
+  const currentPage = Number(page as string) || 1
 
-  const loggedIn: LoggedInType = await getLoggedInUser();
+  const loggedIn: LoggedInType = await getLoggedInUser()
 
   const accounts: {
-    data: Account[],
-    totalBanks: number,
-    totalCurrentBalance: number;
-  } = await getAccounts({ userId: loggedIn.$id });
+    data: Account[]
+    totalBanks: number
+    totalCurrentBalance: number
+  } = await getAccounts({ userId: loggedIn.$id })
 
-  if (!accounts) return;
+  if (!accounts) return
 
-  const accountsData = accounts?.data;
-  const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
+  const accountsData = accounts?.data
+  const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId
 
   const account: {
-    data: PlaidResponseAccount;
-    transactions: any[];
-  } = await getAccount({ appwriteItemId });
+    data: PlaidResponseAccount
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    transactions: any[]
+  } = await getAccount({ appwriteItemId })
 
   return (
     <section className="home">
@@ -57,7 +58,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
         banks={accountsData?.slice(0, 2) as Bank[] & Account[]}
       />
     </section>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

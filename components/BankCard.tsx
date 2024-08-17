@@ -1,15 +1,24 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import { cn, formatAmount } from "@/lib/utils";
-import Image from "next/image";
+import { cn, formatAmount } from '@/lib/utils'
+import Image from 'next/image'
 
-const BankCard = ({ account, userName, showBalance = true, type = 'aside' }: CreditCardProps) => {
+const BankCard = ({
+  account,
+  userName,
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  showBalance = true,
+  type = 'aside',
+}: CreditCardProps) => {
   return (
     <div className="flex flex-col">
-      <Link href="/" className={cn('bank-card', {
-        'min-w-[320px]': type === 'main',
-        'min-w-[295px]' : type === 'aside'
-      })}>
+      <Link
+        href="/"
+        className={cn('bank-card', {
+          'min-w-[320px]': type === 'main',
+          'min-w-[295px]': type === 'aside',
+        })}
+      >
         <div className="bank-card_content">
           <div>
             <h1 className="text-16 font-semibold text-white">{account.name}</h1>
@@ -30,12 +39,9 @@ const BankCard = ({ account, userName, showBalance = true, type = 'aside' }: Cre
         </div>
 
         <div className="bank-card_icon">
-          <Image src="/icons/Paypass.svg"
-            alt="pay"
-            width={20}
-            height={24}
-          />
-          <Image src="/icons/mastercard.svg"
+          <Image src="/icons/Paypass.svg" alt="pay" width={20} height={24} />
+          <Image
+            src="/icons/mastercard.svg"
             alt="mastercard"
             width={45}
             height={32}
@@ -43,17 +49,18 @@ const BankCard = ({ account, userName, showBalance = true, type = 'aside' }: Cre
           />
         </div>
 
-        <Image src="/icons/lines.svg"
+        <Image
+          src="/icons/lines.svg"
           alt="lines"
           width={316}
           height={190}
-          className="absolute top-0 left-0"
+          className="absolute left-0 top-0"
         />
       </Link>
 
       {/* TODO: COPY CARD NUMBERS */}
     </div>
-  );
-};
+  )
+}
 
-export default BankCard;
+export default BankCard

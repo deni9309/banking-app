@@ -2,10 +2,10 @@
 // The config you add here will be used whenever the server handles a request.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-import * as Sentry from "@sentry/nextjs";
+import * as Sentry from '@sentry/nextjs'
 
 Sentry.init({
-  dsn: "https://ea79ce964b3ef0794bbd5d49d820b6b3@o4507222288105472.ingest.de.sentry.io/4507222320021584",
+  dsn: 'https://ea79ce964b3ef0794bbd5d49d820b6b3@o4507222288105472.ingest.de.sentry.io/4507222320021584',
 
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1,
@@ -15,5 +15,4 @@ Sentry.init({
 
   // uncomment the line below to enable Spotlight (https://spotlightjs.com)
   // spotlight: process.env.NODE_ENV === 'development',
-  
-});
+})

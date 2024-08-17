@@ -1,25 +1,34 @@
-import { cn, formatAmount, formatDateTime, getTransactionStatus, removeSpecialCharacters } from "@/lib/utils";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { transactionCategoryStyles } from "@/constants";
+import {
+  cn,
+  formatAmount,
+  formatDateTime,
+  getTransactionStatus,
+  removeSpecialCharacters,
+} from '@/lib/utils'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+import { transactionCategoryStyles } from '@/constants'
 
 const CategoryBadge = ({ category }: CategoryBadgeProps) => {
-  const {
-    borderColor,
-    backgroundColor,
-    textColor,
-    chipBackgroundColor
-  } = transactionCategoryStyles[category as keyof typeof transactionCategoryStyles] ||
-    transactionCategoryStyles.default;
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { borderColor, backgroundColor, textColor, chipBackgroundColor } =
+    transactionCategoryStyles[
+      category as keyof typeof transactionCategoryStyles
+    ] || transactionCategoryStyles.default
 
   return (
     <div className={cn('category-badge', borderColor, chipBackgroundColor)}>
       <div className={cn('size-2 rounded-full', backgroundColor)} />
-      <p className={cn('text-[12px] font-medium')}>
-        {category}
-      </p>
+      <p className={cn('text-[12px] font-medium')}>{category}</p>
     </div>
-  );
-};
+  )
+}
 
 const TransactionsTable = ({ transactions }: TransactionTableProps) => {
   return (
@@ -36,23 +45,28 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
       </TableHeader>
       <TableBody>
         {transactions.map((t: Transaction) => {
-          const status = getTransactionStatus(new Date(t.date));
-          const amount = formatAmount(t.amount);
+          const status = getTransactionStatus(new Date(t.date))
+          const amount = formatAmount(t.amount)
 
-          const isDebit = t.type === 'debit';
-          const isCredit = t.type === 'credit';
+          const isDebit = t.type === 'debit'
+          const isCredit = t.type === 'credit'
 
           return (
-            <TableRow key={t.id} className={`!over:bg-none !border-b-DEFAULT ${isDebit || amount[0] === '-' ? 'bg-[#fffbfa]' : 'bg-[#f6fef9]'}`}>
+            <TableRow
+              key={t.id}
+              className={`!over:bg-none !border-b-DEFAULT ${isDebit || amount[0] === '-' ? 'bg-[#fffbfa]' : 'bg-[#f6fef9]'}`}
+            >
               <TableCell className="max-w-[250px] pl-2 pr-10">
                 <div className="flex items-center gap-3">
-                  <h1 className="text-14 font-semibold text-[#344054] truncate">
+                  <h1 className="text-14 truncate font-semibold text-[#344054]">
                     {removeSpecialCharacters(t.name)}
                   </h1>
                 </div>
               </TableCell>
 
-              <TableCell className={`font-semibold pl-2 pr-10 ${isDebit || amount[0] === '-' ? 'text-[#f04438]' : 'text-[#039855]'}`}>
+              <TableCell
+                className={`pl-2 pr-10 font-semibold ${isDebit || amount[0] === '-' ? 'text-[#f04438]' : 'text-[#039855]'}`}
+              >
                 {isDebit ? `-${amount}` : isCredit ? amount : amount}
               </TableCell>
 
@@ -64,19 +78,19 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                 {formatDateTime(new Date(t.date)).dateTime}
               </TableCell>
 
-              <TableCell className="min-w-24 capitalize pl-2 pr-10">
+              <TableCell className="min-w-24 pl-2 pr-10 capitalize">
                 {t.paymentChannel}
               </TableCell>
 
-              <TableCell className="max-md:hidden pl-2 pr-10">
+              <TableCell className="pl-2 pr-10 max-md:hidden">
                 <CategoryBadge category={t.category} />
               </TableCell>
             </TableRow>
-          );
+          )
         })}
       </TableBody>
     </Table>
-  );
-};
+  )
+}
 
-export default TransactionsTable;
+export default TransactionsTable
