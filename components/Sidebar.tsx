@@ -1,12 +1,13 @@
 'use client'
+
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
 import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils'
-import Footer from './Footer'
-import PlaidLink from './PlaidLink'
+import Footer from '@/components/Footer'
+import PlaidLink from '@/components/PlaidLink'
 
 const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname()

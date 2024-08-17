@@ -1,10 +1,11 @@
 'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from './ui/sheet'
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils'
 import Footer from './Footer'

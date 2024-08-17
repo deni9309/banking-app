@@ -10,7 +10,7 @@ import {
   FormLabel,
   FormMessage,
 } from './ui/form'
-import { Input } from './ui/input'
+import { Input } from '@/components/ui/input'
 
 const formSchema = authFormSchema('sign-up')
 interface CustomInput {

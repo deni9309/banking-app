@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import BankCard from './BankCard'
+import BankCard from '@/components/BankCard'
 
 //eslint-disable-next-line @typescript-eslint/no-unused-vars
 const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
@@ -29,8 +29,16 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
       <section className="banks">
         <div className="flex w-full justify-between">
           <h2 className="header-2">My Banks</h2>
-          <Link href="/" className="flex gap-2">
-            <Image src="/icons/plus.svg" alt="plus" width={20} height={20} />
+          <Link
+            href="/"
+            className="flex gap-2"
+          >
+            <Image
+              src="/icons/plus.svg"
+              alt="plus"
+              width={20}
+              height={20}
+            />
             <h2 className="text-14 font-semibold text-gray-600">Add Bank</h2>
           </Link>
         </div>
