@@ -61,7 +61,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
               key={t.id}
               className={`!over:bg-none !border-b-DEFAULT ${isDebit || amount[0] === '-' ? 'bg-[#fffbfa]' : 'bg-[#f6fef9]'}`}
             >
-              <TableCell className="max-w-[250px] pl-2 pr-10">
+              <TableCell className="max-w-[200px] pl-2 pr-5">
                 <div className="flex items-center gap-3">
                   <h1 className="text-14 truncate font-semibold text-[#344054]">
                     {removeSpecialCharacters(t.name)}
@@ -70,24 +70,24 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
               </TableCell>
 
               <TableCell
-                className={`pl-2 pr-10 font-semibold ${isDebit || amount[0] === '-' ? 'text-[#f04438]' : 'text-[#039855]'}`}
+                className={`pl-2 pr-5 font-semibold ${isDebit || amount[0] === '-' ? 'text-[#f04438]' : 'text-[#039855]'}`}
               >
                 {isDebit ? `-${amount}` : isCredit ? amount : amount}
               </TableCell>
 
-              <TableCell className="pl-2 pr-10">
+              <TableCell className="pl-2 pr-5">
                 <CategoryBadge category={status} />
               </TableCell>
 
-              <TableCell className="min-w-32 pl-2 pr-10">
+              <TableCell className="w-28 line-clamp-2 pl-2 pr-5">
                 {formatDateTime(new Date(t.date)).dateTime}
               </TableCell>
 
-              <TableCell className="min-w-24 pl-2 pr-10 capitalize">
+              <TableCell className="truncate max-w-20 pl-2 pr-5 capitalize">
                 {t.paymentChannel}
               </TableCell>
 
-              <TableCell className="pl-2 pr-10 max-md:hidden">
+              <TableCell className="pl-2 pr-5 max-md:hidden">
                 <CategoryBadge category={t.category} />
               </TableCell>
             </TableRow>

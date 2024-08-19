@@ -11,9 +11,13 @@ import {
 } from 'plaid'
 
 import { createAdminClient, createSessionClient } from '@/lib/appwrite'
-import { encryptId, extractCustomerIdFromUrl, parseStringify } from '@/lib/utils'
+import {
+  encryptId,
+  extractCustomerIdFromUrl,
+  parseStringify,
+} from '@/lib/utils'
 import { plaidClient } from '@/lib/plaid'
-import { addFundingSource, createDwollaCustomer } from './dwolla.actions'
+import { addFundingSource, createDwollaCustomer } from '@/lib/actions/dwolla.actions'
 
 const {
   APPWRITE_DATABASE_ID: DATABASE_ID,

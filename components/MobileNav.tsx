@@ -82,7 +82,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                     </SheetClose>
                   )
                 })}
-                TODO: USER DATA
+              
               </nav>
             </SheetClose>
 

@@ -13,7 +13,7 @@ const RecentTransactions = ({
   page = 1,
 }: RecentTransactionsProps) => {
   return (
-    <section className="recent-transactions">
+    <section className="recent-transactions mx-auto xl:max-w-[850px]">
       <header className="flex items-center justify-between">
         <h2 className="recent-transactions-label">Recent transactions</h2>
         <Link

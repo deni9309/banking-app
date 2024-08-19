@@ -1,10 +1,10 @@
 'use server'
 import { CountryCode } from 'plaid'
 
-import { plaidClient } from '../plaid'
-import { parseStringify } from '../utils'
-import { getTransactionsByBankId } from './transaction.actions'
-import { getBanks, getBank } from './user.actions'
+import { plaidClient } from '@/lib/plaid'
+import { parseStringify } from '@/lib/utils'
+import { getTransactionsByBankId } from '@/lib/actions/transaction.actions'
+import { getBanks, getBank } from '@/lib/actions/user.actions'
 
 // Get multiple bank accounts
 export const getAccounts = async ({ userId }: getAccountsProps) => {
