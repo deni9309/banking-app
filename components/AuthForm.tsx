@@ -10,11 +10,11 @@ import { useForm } from 'react-hook-form'
 import { Loader2 } from 'lucide-react'
 
 import { authFormSchema } from '@/lib/utils'
-import { Form } from './ui/form'
 import { signIn, signUp } from '@/lib/actions/user.actions'
-import CustomInput from './CustomInput'
-import { Button } from './ui/button'
-import PlaidLink from './PlaidLink'
+import { Form } from '@/components/ui/form'
+import CustomInput from '@/components/CustomInput'
+import { Button } from '@/components/ui/button'
+import PlaidLink from '@/components/PlaidLink'
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter()
@@ -32,7 +32,6 @@ const AuthForm = ({ type }: { type: string }) => {
     setIsLoading(true)
     try {
       // Sign up with Appwrite & create plaid link token
-
       if (type === 'sign-up') {
         const userData = {
           firstName: data.firstName!,
@@ -48,6 +47,7 @@ const AuthForm = ({ type }: { type: string }) => {
         }
 
         const newUser = await signUp(userData)
+        
         setUser(newUser)
       }
 
@@ -109,12 +109,14 @@ const AuthForm = ({ type }: { type: string }) => {
                       name="firstName"
                       label="First Name"
                       placeholder="Enter your first name"
+                      autoComplete="given-name"
                     />
                     <CustomInput
                       control={form.control}
                       name="lastName"
                       label="Last Name"
                       placeholder="Enter your first name"
+                      autoComplete="family-name"
                     />
                   </div>
                   <CustomInput
@@ -164,12 +166,14 @@ const AuthForm = ({ type }: { type: string }) => {
                 name="email"
                 label="Email"
                 placeholder="Enter your email"
+                autoComplete="email"
               />
               <CustomInput
                 control={form.control}
                 name="password"
                 label="Password"
                 placeholder="Enter your password"
+                autoComplete="password"
               />
 
               <div className="flex flex-col gap-4">

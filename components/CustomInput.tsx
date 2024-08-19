@@ -9,7 +9,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from './ui/form'
+} from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
 const formSchema = authFormSchema('sign-up')
@@ -18,9 +18,16 @@ interface CustomInput {
   name: FieldPath<z.infer<typeof formSchema>>
   label: string
   placeholder: string
+  autoComplete?: React.HTMLInputAutoCompleteAttribute
 }
 
-const CustomInput = ({ control, name, label, placeholder }: CustomInput) => {
+const CustomInput = ({
+  control,
+  name,
+  label,
+  placeholder,
+  autoComplete = 'off',
+}: CustomInput) => {
   return (
     <FormField
       control={control}
@@ -28,13 +35,15 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInput) => {
       render={({ field }) => (
         <FormItem className="form-item">
           <FormLabel className="form-label">{label}</FormLabel>
+
           <div className="flex w-full flex-col">
             <FormControl>
               <Input
+                {...field}
                 placeholder={placeholder}
                 className="input-class"
                 type={name === 'password' ? 'password' : 'text'}
-                {...field}
+                autoComplete={autoComplete}
               />
             </FormControl>
             <FormMessage className="form-message mt-2" />

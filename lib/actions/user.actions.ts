@@ -1,4 +1,5 @@
 'use server'
+
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import { ID, Query } from 'node-appwrite'
@@ -9,8 +10,8 @@ import {
   Products,
 } from 'plaid'
 
-import { createAdminClient, createSessionClient } from '../appwrite'
-import { encryptId, extractCustomerIdFromUrl, parseStringify } from '../utils'
+import { createAdminClient, createSessionClient } from '@/lib/appwrite'
+import { encryptId, extractCustomerIdFromUrl, parseStringify } from '@/lib/utils'
 import { plaidClient } from '@/lib/plaid'
 import { addFundingSource, createDwollaCustomer } from './dwolla.actions'
 

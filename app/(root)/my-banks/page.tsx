@@ -7,13 +7,13 @@ import BankCard from '@/components/BankCard'
 
 const MyBanks = async () => {
   const loggedIn: LoggedInType = await getLoggedInUser()
-  
+
   if (!loggedIn?.$id) return null
 
   const accounts: {
-    data: Account[];
-    totalBanks: number;
-    totalCurrentBalance: number;
+    data: Account[]
+    totalBanks: number
+    totalCurrentBalance: number
   } = await getAccounts({ userId: loggedIn.$id })
 
   return (

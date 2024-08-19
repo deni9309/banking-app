@@ -1,7 +1,7 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { cn, formatAmount } from '@/lib/utils'
-import Image from 'next/image'
 
 const BankCard = ({
   account,

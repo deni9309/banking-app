@@ -16,14 +16,16 @@ import {
 import { transactionCategoryStyles } from '@/constants'
 
 const CategoryBadge = ({ category }: CategoryBadgeProps) => {
-  const { borderColor,
+  const {
+    borderColor,
     backgroundColor,
     //eslint-disable-next-line @typescript-eslint/no-unused-vars
     textColor,
-    chipBackgroundColor
-  } = transactionCategoryStyles[
-  category as keyof typeof transactionCategoryStyles
-  ] || transactionCategoryStyles.default
+    chipBackgroundColor,
+  } =
+    transactionCategoryStyles[
+      category as keyof typeof transactionCategoryStyles
+    ] || transactionCategoryStyles.default
 
   return (
     <div className={cn('category-badge', borderColor, chipBackgroundColor)}>
