@@ -191,7 +191,7 @@
 
   /* My Banks */
   .my-banks {
-    @apply flex h-screen max-h-screen w-full flex-col gap-8 bg-gray-25 p-8 xl:py-12;
+    @apply flex h-screen max-h-screen w-full flex-col gap-8 bg-gray-25 p-8 max-sm:px-3 xl:py-12;
   }
 
   /* My Banks */
@@ -229,7 +229,7 @@
   }
 
   .bank-card_content {
-    @apply relative z-10 flex size-full max-w-[205px] flex-col justify-between rounded-l-[18px] bg-gray-700 bg-bank-gradient px-3 py-4;
+    @apply relative z-10 flex size-full max-w-[212px] flex-col justify-between rounded-l-[18px] bg-gray-700 bg-bank-gradient px-3 py-4;
   }
 
   .bank-card_icon {
