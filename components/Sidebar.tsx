@@ -13,8 +13,8 @@ const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname()
 
   return (
-    <section className="sidebar">
-      <nav className="flex flex-col gap-4">
+    <section className="sidebar max-w-[270px] px-0">
+      <nav className="flex flex-col gap-4 px-0">
         <Link href="/" className="mb-12 flex cursor-pointer items-center gap-2">
           <Image
             src="/icons/logo.svg"

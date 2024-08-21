@@ -26,7 +26,7 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
         </div>
       </section>
 
-      <section className="banks">
+      <section className="banks mr-2">
         <div className="flex w-full justify-between">
           <h2 className="header-2">My Banks</h2>
           <Link href="/" className="flex gap-2">
@@ -36,7 +36,7 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
         </div>
 
         {banks?.length > 0 && (
-          <div className="relative flex flex-1 flex-col items-center justify-center gap-5">
+          <div className="relative flex flex-col items-center justify-center">
             <div className="relative z-10">
               <BankCard
                 key={banks[0].$id}
@@ -46,7 +46,7 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
               />
             </div>
             {banks[1] && (
-              <div className="absolute left-8 top-8 z-0 w-[90%]">
+              <div className="absolute w-[100%] left-3 top-8 z-0">
                 <BankCard
                   key={banks[1].$id}
                   account={banks[1]}

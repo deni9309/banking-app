@@ -13,11 +13,12 @@ const RecentTransactions = ({
   page = 1,
 }: RecentTransactionsProps) => {
   return (
-    <section className="recent-transactions mx-auto xl:max-w-[850px]">
+    <section className="recent-transactions">
       <header className="flex items-center justify-between">
         <h2 className="recent-transactions-label">Recent transactions</h2>
         <Link
           href={`/transaction-history/?id=${appwriteItemId}`}
+          prefetch
           className="view-all-btn"
         >
           View all

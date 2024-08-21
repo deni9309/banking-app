@@ -28,9 +28,9 @@ const CategoryBadge = ({ category }: CategoryBadgeProps) => {
     ] || transactionCategoryStyles.default
 
   return (
-    <div className={cn('category-badge', borderColor, chipBackgroundColor)}>
-      <div className={cn('size-2 rounded-full', backgroundColor)} />
-      <p className={cn('text-[12px] font-medium')}>{category}</p>
+    <div className={cn('flex items-center gap-1 rounded-xl border-[1.5px] py-[2px] px-1.5', borderColor, chipBackgroundColor)}>
+      <div className={cn(textColor)}>●</div>
+      <p className={cn('text-[11px] text-wrap leading-tight font-medium')}>{category}</p>
     </div>
   )
 }
@@ -59,11 +59,11 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
           return (
             <TableRow
               key={t.id}
-              className={`!over:bg-none !border-b-DEFAULT ${isDebit || amount[0] === '-' ? 'bg-[#fffbfa]' : 'bg-[#f6fef9]'}`}
+              className={`!over:bg-none max-md:text-xs !border-b-DEFAULT ${isDebit || amount[0] === '-' ? 'bg-[#fffbfa]' : 'bg-[#f6fef9]'}`}
             >
-              <TableCell className="max-w-[200px] pl-2 pr-5">
+              <TableCell className="max-w-[160px] pl-2 pr-5">
                 <div className="flex items-center gap-3">
-                  <h1 className="text-14 truncate font-semibold text-[#344054]">
+                  <h1 className="text-14 line-clamp-2 font-semibold text-[#344054]">
                     {removeSpecialCharacters(t.name)}
                   </h1>
                 </div>
@@ -75,7 +75,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                 {isDebit ? `-${amount}` : isCredit ? amount : amount}
               </TableCell>
 
-              <TableCell className="pl-2 pr-5">
+              <TableCell className="pl-2 pr-5 w-[118px]">
                 <CategoryBadge category={status} />
               </TableCell>
 
@@ -83,11 +83,11 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                 {formatDateTime(new Date(t.date)).dateTime}
               </TableCell>
 
-              <TableCell className="truncate max-w-20 pl-2 pr-5 capitalize">
+              <TableCell className="truncate max-w-14 pl-2 pr-5 capitalize max-md:hidden">
                 {t.paymentChannel}
               </TableCell>
 
-              <TableCell className="pl-2 pr-5 max-md:hidden">
+              <TableCell className="pl-2 pr-5 w-28 max-md:hidden">
                 <CategoryBadge category={t.category} />
               </TableCell>
             </TableRow>

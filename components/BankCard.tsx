@@ -16,7 +16,7 @@ const BankCard = ({
         href="/"
         className={cn('bank-card', {
           'min-w-[310px]': type === 'main',
-          'min-w-[245px]': type === 'aside',
+          'min-w-[200px]': type === 'aside',
         })}
       >
         <div className="bank-card_content">
