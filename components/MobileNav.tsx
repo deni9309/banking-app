@@ -19,7 +19,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname()
 
   return (
-    <section className="w-full px-0 max-w-[264px]">
+    <section className="w-full max-w-[264px] px-0">
       <Sheet>
         <SheetTrigger>
           <Image
@@ -30,7 +30,10 @@ const MobileNav = ({ user }: MobileNavProps) => {
             className="cursor-pointer"
           />
         </SheetTrigger>
-        <SheetContent side="left" className="border-none px-3 w-[270px] bg-white">
+        <SheetContent
+          side="left"
+          className="w-[270px] border-none bg-white px-3"
+        >
           <Link
             href="/"
             className="flex cursor-pointer items-center gap-1 px-4"
@@ -83,7 +86,6 @@ const MobileNav = ({ user }: MobileNavProps) => {
                     </SheetClose>
                   )
                 })}
-              
               </nav>
             </SheetClose>
 

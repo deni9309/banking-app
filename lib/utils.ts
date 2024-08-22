@@ -2,7 +2,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import qs from 'query-string'
 import { twMerge } from 'tailwind-merge'
-import { z } from 'zod'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -139,15 +138,13 @@ export function countTransactionCategories(
   // Iterate over each transaction
   transactions &&
     transactions.forEach((transaction) => {
-      // Extract the category from the transaction
-      const category = transaction.category
+      const category = transaction.category // Extract the category from the transaction
 
       // If the category exists in the categoryCounts object, increment its count
       if (categoryCounts.hasOwnProperty(category)) {
         categoryCounts[category]++
       } else {
-        // Otherwise, initialize the count to 1
-        categoryCounts[category] = 1
+        categoryCounts[category] = 1 // Otherwise, initialize the count to 1
       }
 
       // Increment total count
@@ -204,21 +201,3 @@ export const getTransactionStatus = (date: Date) => {
 
   return date > twoDaysAgo ? 'Processing' : 'Success'
 }
-
-export const authFormSchema = (type: string) =>
-  z.object({
-    // sign up
-    firstName: type === 'sign-in' ? z.string().optional() : z.string().min(3),
-    lastName: type === 'sign-in' ? z.string().optional() : z.string().min(3),
-    address1: type === 'sign-in' ? z.string().optional() : z.string().max(50),
-    city: type === 'sign-in' ? z.string().optional() : z.string().max(50),
-    state:
-      type === 'sign-in' ? z.string().optional() : z.string().min(2).max(2),
-    postalCode:
-      type === 'sign-in' ? z.string().optional() : z.string().min(3).max(6),
-    dateOfBirth: type === 'sign-in' ? z.string().optional() : z.string().min(3),
-    ssn: type === 'sign-in' ? z.string().optional() : z.string().min(3),
-    // both
-    email: z.string().email(),
-    password: z.string().min(8),
-  })

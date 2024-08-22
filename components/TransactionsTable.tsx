@@ -18,8 +18,8 @@ import { transactionCategoryStyles } from '@/constants'
 const CategoryBadge = ({ category }: CategoryBadgeProps) => {
   const {
     borderColor,
-    backgroundColor,
     //eslint-disable-next-line @typescript-eslint/no-unused-vars
+    backgroundColor,
     textColor,
     chipBackgroundColor,
   } =
@@ -28,9 +28,17 @@ const CategoryBadge = ({ category }: CategoryBadgeProps) => {
     ] || transactionCategoryStyles.default
 
   return (
-    <div className={cn('flex items-center gap-1 rounded-xl border-[1.5px] py-[2px] px-1.5', borderColor, chipBackgroundColor)}>
+    <div
+      className={cn(
+        'flex items-center gap-1 rounded-xl border-[1.5px] px-1.5 py-[2px]',
+        borderColor,
+        chipBackgroundColor,
+      )}
+    >
       <div className={cn(textColor)}>●</div>
-      <p className={cn('text-[11px] text-wrap leading-tight font-medium')}>{category}</p>
+      <p className={cn('text-wrap text-[11px] font-medium leading-tight')}>
+        {category}
+      </p>
     </div>
   )
 }
@@ -59,7 +67,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
           return (
             <TableRow
               key={t.id}
-              className={`!over:bg-none max-md:text-xs !border-b-DEFAULT ${isDebit || amount[0] === '-' ? 'bg-[#fffbfa]' : 'bg-[#f6fef9]'}`}
+              className={`!over:bg-none !border-b-DEFAULT max-md:text-xs ${isDebit || amount[0] === '-' ? 'bg-[#fffbfa]' : 'bg-[#f6fef9]'}`}
             >
               <TableCell className="max-w-[160px] pl-2 pr-5">
                 <div className="flex items-center gap-3">
@@ -75,19 +83,19 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                 {isDebit ? `-${amount}` : isCredit ? amount : amount}
               </TableCell>
 
-              <TableCell className="pl-2 pr-5 w-[118px]">
+              <TableCell className="w-[118px] pl-2 pr-5">
                 <CategoryBadge category={status} />
               </TableCell>
 
-              <TableCell className="w-28 line-clamp-2 pl-2 pr-5">
+              <TableCell className="line-clamp-2 w-28 pl-2 pr-5">
                 {formatDateTime(new Date(t.date)).dateTime}
               </TableCell>
 
-              <TableCell className="truncate max-w-14 pl-2 pr-5 capitalize max-md:hidden">
+              <TableCell className="max-w-14 truncate pl-2 pr-5 capitalize max-md:hidden">
                 {t.paymentChannel}
               </TableCell>
 
-              <TableCell className="pl-2 pr-5 w-28 max-md:hidden">
+              <TableCell className="w-28 pl-2 pr-5 max-md:hidden">
                 <CategoryBadge category={t.category} />
               </TableCell>
             </TableRow>

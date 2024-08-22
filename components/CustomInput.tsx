@@ -2,7 +2,7 @@ import React from 'react'
 import { Control, FieldPath } from 'react-hook-form'
 import { z } from 'zod'
 
-import { authFormSchema } from '@/lib/utils'
+import { authFormSchema } from '@/schemas/auth-form'
 import {
   FormControl,
   FormField,
