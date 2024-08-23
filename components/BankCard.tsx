@@ -7,7 +7,6 @@ import { Copy } from '@/components/Copy'
 const BankCard = ({
   account,
   userName,
-  //eslint-disable-next-line @typescript-eslint/no-unused-vars
   showBalance = true,
   type = 'aside',
 }: CreditCardProps) => {

@@ -41,13 +41,14 @@ export const BankDropdown = ({
 
   return (
     <Select
-      name='senderBank'
+      name="senderBank"
       defaultValue={selected.id}
       onValueChange={(value) => handleBankChange(value)}
     >
       <SelectTrigger
-        id='senderBank'
-        className={`flex w-full gap-3 bg-white md:w-[300px] ${otherStyles}`}>
+        id="senderBank"
+        className={`flex w-full gap-3 bg-white md:w-[300px] ${otherStyles}`}
+      >
         <Image
           src="icons/credit-card.svg"
           alt="account"

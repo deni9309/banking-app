@@ -5,11 +5,11 @@ import { getLoggedInUser } from '@/lib/actions/user.actions'
 import { getAccount, getAccounts } from '@/lib/actions/bank.actions'
 import { formatAmount } from '@/lib/utils'
 import TransactionsTable from '@/components/TransactionsTable'
+import { Pagination } from '@/components/Pagination'
 
 const TransactionHistory = async ({
   searchParams: { id, page },
 }: SearchParamProps) => {
-  //eslint-disable-next-line @typescript-eslint/no-unused-vars
   const currentPage = Number(page as string) || 1
   const loggedIn: LoggedInType = await getLoggedInUser()
 
@@ -26,9 +26,19 @@ const TransactionHistory = async ({
 
   const account: {
     data: PlaidResponseAccount
-    //eslint-disable-next-line @typescript-eslint/no-explicit-any
-    transactions: any[]
+    transactions: Transaction[]
   } = await getAccount({ appwriteItemId })
+
+  const rowsPerPage = 10
+  const totalPages = Math.ceil(account?.transactions.length / rowsPerPage)
+
+  const indexOfLastTransaction = currentPage * rowsPerPage
+  const indexOfFirstTransaction = indexOfLastTransaction - rowsPerPage
+
+  const currentTransactions = account?.transactions.slice(
+    indexOfFirstTransaction,
+    indexOfLastTransaction,
+  )
 
   return (
     <section className="transactions">
@@ -60,7 +70,13 @@ const TransactionHistory = async ({
         </div>
 
         <section className="flex w-full flex-col gap-6">
-          <TransactionsTable transactions={account?.transactions} />
+          <TransactionsTable transactions={currentTransactions} />
+
+          {totalPages > 1 && (
+            <div className="my-4 w-full px-0.5">
+              <Pagination page={currentPage} totalPages={totalPages} />
+            </div>
+          )}
         </section>
       </div>
     </section>

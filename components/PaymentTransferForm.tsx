@@ -96,7 +96,10 @@ export const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             <FormItem className="border-t border-gray-200">
               <div className="payment-transfer_form-item pb-6 pt-5">
                 <div className="payment-transfer_form-content">
-                  <FormLabel htmlFor='senderBank' className="text-14 font-medium text-gray-700">
+                  <FormLabel
+                    htmlFor="senderBank"
+                    className="text-14 font-medium text-gray-700"
+                  >
                     Select Source Bank
                   </FormLabel>
                   <FormDescription className="text-12 font-normal text-gray-600">
@@ -137,7 +140,7 @@ export const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
                   <FormControl>
                     <Textarea
                       {...field}
-                      autoComplete='off'
+                      autoComplete="off"
                       placeholder="Write a short note here"
                       className="input-class"
                     />
@@ -173,7 +176,7 @@ export const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
                       {...field}
                       placeholder="johndoe@example.com"
                       className="input-class"
-                      autoComplete='off'
+                      autoComplete="off"
                     />
                   </FormControl>
                   <FormMessage className="text-12 text-red-500" />
