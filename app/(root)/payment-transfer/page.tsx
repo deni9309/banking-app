@@ -6,11 +6,12 @@ import { getLoggedInUser } from '@/lib/actions/user.actions'
 import { getAccounts } from '@/lib/actions/bank.actions'
 
 const Transfer = async () => {
-  const loggedIn = await getLoggedInUser()
+  const loggedIn: LoggedInType = await getLoggedInUser()
+  if (!loggedIn) return
+
   const accounts = await getAccounts({
     userId: loggedIn.$id,
   })
-
   if (!accounts) return
 
   const accountsData = accounts?.data

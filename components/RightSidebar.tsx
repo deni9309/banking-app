@@ -6,11 +6,7 @@ import { countTransactionCategories } from '@/lib/utils'
 import BankCard from '@/components/BankCard'
 import { Category } from '@/components/Category'
 
-const RightSidebar = ({
-  user,
-  transactions,
-  banks
-}: RightSidebarProps) => {
+const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
   const categories: CategoryCount[] = countTransactionCategories(transactions)
 
   return (
@@ -65,10 +61,10 @@ const RightSidebar = ({
           </div>
         )}
 
-        <div className='mt-10 flex flex-1 flex-col gap-6'>
-          <h2 className='header-2'>Top Categories</h2>
-          <div className='space-y-5'>
-            {categories.map((c, i) => (
+        <div className="mt-10 flex flex-1 flex-col gap-6">
+          <h2 className="header-2">Top Categories</h2>
+          <div className="space-y-5">
+            {categories.map((c) => (
               <Category key={c.name} category={c} />
             ))}
           </div>
