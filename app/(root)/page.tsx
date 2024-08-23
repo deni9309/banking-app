@@ -25,8 +25,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 
   const account: {
     data: PlaidResponseAccount
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    transactions: any[]
+    transactions: Transaction[]
   } = await getAccount({ appwriteItemId })
 
   return (
@@ -52,6 +51,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           page={currentPage}
         />
       </div>
+
       <RightSidebar
         user={loggedIn}
         transactions={account?.transactions}
