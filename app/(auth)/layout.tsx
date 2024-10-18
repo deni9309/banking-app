@@ -11,10 +11,10 @@ export default function AuthLayout({
       <div className="auth-asset">
         <div>
           <Image
-            src="/icons/auth-image.svg"
+            src="/icons/auth-image2.svg"
             alt="Auth image"
-            width={500}
-            height={500}
+            width={600}
+            height={600}
           />
         </div>
       </div>
